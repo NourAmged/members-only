@@ -1,10 +1,10 @@
 require("dotenv").config();
 
-
 const express = require("express");
 const path = require("node:path");
 
 const indexRouter = require("./routes/index");
+const loginRouter = require("./routes/login");
 
 const app = express();
 const publicPath = path.join(__dirname, "public");
@@ -20,6 +20,7 @@ app.use(express.static(publicPath));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
+app.use("/login", loginRouter);
 
 app.listen(PORT, () => {
   console.log(`app is running on localhost:${PORT}`);

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Login Page</title>
+</head>
+
+<body>
+  <%- include("navbar") %>
+  <form class="login-form" action="">
+    <h1>Welcome back</h1>
+    <div class="logging-fields-container">
+      <div>
+        <label for="username">username</label><br />
+        <input type="text" name="username" id="username" required><br />
+      </div><br />
+      <div>
+        <label for="password">password</label><br />
+        <input type="password" name="password" id="password" required>
+      </div>
+    </div>
+    <button class="submit-login" type="submit">Login</button>
+  </form>
+</body>
+
+</html>

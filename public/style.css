@@ -22,3 +22,41 @@
   cursor: pointer;
   padding: 12px 15px;
 }
+
+.login-form {
+  display: flex;
+  margin: auto;
+  margin-top: 2rem;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid lightgrey;
+  width: 450px;
+  height: 300px;
+  border-radius: 5px;
+  padding: 1.5rem 1rem 1rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.logging-fields-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 2rem 0 4rem 0;
+  width: 100%;
+}
+
+.logging-fields-container input {
+  padding: 3px 5px;
+}
+
+.logging-fields-container div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.submit-login {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 1em;
+}
