@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav {
+  display: flex;
+  padding: 2rem 1rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid grey;
+}
+
+.signin-container {
+  display: flex;
+  gap: 12px;
+}
+
+.login-btn,
+.register-btn {
+  cursor: pointer;
+  padding: 12px 15px;
+}
