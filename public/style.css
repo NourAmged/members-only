@@ -23,7 +23,12 @@
   padding: 12px 15px;
 }
 
-.login-form {
+.register-form {
+  height: 450px !important; 
+}
+
+.login-form,
+.register-form {
   display: flex;
   margin: auto;
   margin-top: 2rem;
@@ -37,7 +42,8 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.logging-fields-container {
+.logging-fields-container,
+.register-fields-container {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -45,18 +51,21 @@
   width: 100%;
 }
 
-.logging-fields-container input {
+.logging-fields-container input,
+.register-fields-container input {
   padding: 3px 5px;
 }
 
-.logging-fields-container div {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+.logging-fields-container div,
+.register-fields-container div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.submit-login {
+.submit-login, .submit-register {
   width: 100%;
   padding: 6px 8px;
   font-size: 1em;
+  cursor: pointer;
 }

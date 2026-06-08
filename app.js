@@ -5,6 +5,7 @@ const path = require("node:path");
 
 const indexRouter = require("./routes/index");
 const loginRouter = require("./routes/login");
+const registerRouter = require("./routes/register");
 
 const app = express();
 const publicPath = path.join(__dirname, "public");
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
+app.use("/register", registerRouter);
 
 app.listen(PORT, () => {
   console.log(`app is running on localhost:${PORT}`);

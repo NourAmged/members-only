@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Register</title>
+</head>
+
+<body>
+  <%- include("navbar")%>
+  <form class="register-form" action="">
+    <h1>Register a new account</h1>
+    <div class="register-fields-container">
+      <div>
+        <label for="fullname">Fullname</label><br />
+        <input type="text" name="fullname" id="fullname" required><br />
+      </div><br />
+      <div>
+        <label for="username">Username</label><br />
+        <input type="text" name="username" id="username" required><br />
+      </div><br />
+      <div>
+        <label for="password">Password</label><br />
+        <input type="password" name="password" id="password" required>
+      </div><br />
+      <div>
+        <label for="confirm-password">Confirm password</label><br />
+        <input type="password" name="confirm-password" id="confirm-password" required>
+      </div>
+    </div>
+    <button class="submit-register" type="submit">Register</button>
+
+  </form>
+</body>
+
+</html>
