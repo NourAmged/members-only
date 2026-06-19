@@ -5,7 +5,7 @@ const validateUser = [
     .trim()
     .isLength({ min: 3, max: 32 })
     .withMessage("fullname should be 3 to 32 characters long")
-    .isAlpha({ ignore: " " })
+    .isAlpha("en-US", { ignore: " " }, { ignore: " " })
     .withMessage("fullname should contain letters no special characters"),
 
   body("username")
@@ -24,5 +24,23 @@ const validateUser = [
 
   body("confirm-password").custom((value, { req }) => {
     if (value !== req.body.password) throw new Error("Passwords must be same");
+    return true;
   }),
 ];
+
+const addUser = [
+  ...validateUser,
+  (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("registerpage", { errors: errors.array() });
+    }
+
+    data = matchedData(req);
+    console.log(data);
+    res.redirect("/");
+  },
+];
+
+module.exports = addUser;

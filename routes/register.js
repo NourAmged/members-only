@@ -6,6 +6,6 @@ const addUser = require("../controllers/addUser");
 const registerRouter = Router();
 
 registerRouter.get("/", registerPage);
-registerRouter.post("/", )
+registerRouter.post("/", addUser);
 
 module.exports = registerRouter;
