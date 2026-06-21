@@ -1,11 +1,12 @@
 const { body, validationResult, matchedData } = require("express-validator");
+const { registerUser } = require("../db/queries");
 
 const validateUser = [
   body("fullname")
     .trim()
     .isLength({ min: 3, max: 32 })
     .withMessage("fullname should be 3 to 32 characters long")
-    .isAlpha("en-US", { ignore: " " }, { ignore: " " })
+    .isAlpha("en-US", { ignore: " " })
     .withMessage("fullname should contain letters no special characters"),
 
   body("username")
@@ -23,23 +24,33 @@ const validateUser = [
     .withMessage("Password should at least 8 characters long"),
 
   body("confirm-password").custom((value, { req }) => {
-    if (value !== req.body.password) throw new Error("Passwords must be same");
+    if (value !== req.body.password)
+      throw new Error("Passwords does not match");
     return true;
   }),
 ];
 
 const addUser = [
   ...validateUser,
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(400).render("registerpage", { errors: errors.array() });
+      return res.status(400).render("registerpage", {
+        errors: errors.array(),
+      });
     }
 
-    data = matchedData(req);
-    console.log(data);
-    res.redirect("/");
+    const data = matchedData(req);
+
+    try {
+      await registerUser(data);
+      res.redirect("/");
+    } catch (error) {
+      return res.status(400).render("registerpage", {
+        errors: [{ msg: error.message }],
+      });
+    }
   },
 ];
 
