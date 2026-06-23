@@ -23,6 +23,13 @@
       </div>
     </div>
     <button class="submit-login" type="submit">Login</button>
+    <% if (locals.errors) { %>
+    <ul class="error-list" style="padding:1rem">
+      <% locals.errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+    <% } %>
   </form>
 </body>
 

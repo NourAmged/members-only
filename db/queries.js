@@ -1,6 +1,20 @@
 const pool = require("./pool");
 const bcrypt = require("bcryptjs");
 
+async function getUserByUsername(username) {
+  const { rows } = await pool.query("SELECT * FROM users WHERE username = $1", [
+    username,
+  ]);
+
+  return rows[0];
+}
+
+async function getUserById(id) {
+  const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
+
+  return rows[0];
+}
+
 async function registerUser({ fullname, username, password }) {
   const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -10,7 +24,6 @@ async function registerUser({ fullname, username, password }) {
        VALUES ($1, $2, $3) `,
       [fullname, username, hashedPassword],
     );
-
   } catch (error) {
     if (error.code === "23505") {
       throw new Error("username already in use");
@@ -21,5 +34,7 @@ async function registerUser({ fullname, username, password }) {
 }
 
 module.exports = {
+  getUserByUsername,
+  getUserById,
   registerUser,
 };
