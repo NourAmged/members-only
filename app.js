@@ -6,11 +6,10 @@ const session = require("express-session");
 const passport = require("passport");
 const pgSession = require("connect-pg-simple")(session);
 const LocalStrategy = require("passport-local").Strategy;
-const pool = require("./pool");
+const pool = require("./db/pool");
 
-const indexRouter = require("./routes/index");
-const loginRouter = require("./routes/login");
-const registerRouter = require("./routes/register");
+const indexRouter = require("./routes/indexRouter");
+const { registerRouter, loginRouter } = require("./routes/authRouter");
 
 const app = express();
 const publicPath = path.join(__dirname, "public");

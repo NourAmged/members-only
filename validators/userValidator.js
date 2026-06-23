@@ -1,7 +1,6 @@
-const { body, validationResult, matchedData } = require("express-validator");
-const { registerUser } = require("../db/queries");
+const { body } = require("express-validator");
 
-const validateUser = [
+const validateUserRegister = [
   body("fullname")
     .trim()
     .isLength({ min: 3, max: 32 })
@@ -30,28 +29,20 @@ const validateUser = [
   }),
 ];
 
-const addUser = [
-  ...validateUser,
-  async (req, res) => {
-    const errors = validationResult(req);
+const validateUserLogin = [
+  body("username")
+    .trim()
+    .isLength({ min: 3, max: 12 })
+    .withMessage("username should be 3 to 12 characters long")
+    .isAlphanumeric()
+    .withMessage(
+      "username should only contains numerical and alphabetical values",
+    ),
 
-    if (!errors.isEmpty()) {
-      return res.status(400).render("registerpage", {
-        errors: errors.array(),
-      });
-    }
-
-    const data = matchedData(req);
-
-    try {
-      await registerUser(data);
-      res.redirect("/");
-    } catch (error) {
-      return res.status(400).render("registerpage", {
-        errors: [{ msg: error.message }],
-      });
-    }
-  },
+  body("password")
+    .trim()
+    .isLength({ min: 8 })
+    .withMessage("Password should at least 8 characters long"),
 ];
 
-module.exports = addUser;
+module.exports = { validateUserRegister, validateUserLogin };
