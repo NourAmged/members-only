@@ -7,7 +7,7 @@ function loginPage(req, res) {
 }
 
 function homePage(req, res) {
-  return res.render("homepage");
+  return res.render("homepage", { user: req.user });
 }
 
 module.exports = {

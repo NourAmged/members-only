@@ -5,7 +5,6 @@ const path = require("node:path");
 const session = require("express-session");
 const passport = require("passport");
 const pgSession = require("connect-pg-simple")(session);
-const LocalStrategy = require("passport-local").Strategy;
 const pool = require("./db/pool");
 
 const indexRouter = require("./routes/indexRouter");
@@ -24,7 +23,7 @@ app.use(
   session({
     store: new pgSession({
       pool: pool,
-      tableName: "session",
+      createTableIfMissing: true,
     }),
     secret: "cats",
     resave: false,
@@ -34,7 +33,7 @@ app.use(
 
 app.use(passport.session());
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(publicPath));
 
