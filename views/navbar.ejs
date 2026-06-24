@@ -1,7 +1,19 @@
 <nav class="nav">
   <h1 style="cursor: pointer;" onclick="window.location.href='/'">Members Only</h1>
+  <%if(locals.user){ %>
+  <div class="user-menu" onclick="">
+    <h3><%= user.username%></h3>
+    <img src="./down-arrow.svg" width="26px" height="26px">
+    <ul class="drop-menu">
+      <li><button>New post</button></li>
+      <li><button>All users</button></li>
+      <li><button>Logout</button></li>
+    </ul>
+  </div>
+  <%} else{%>
   <div class="signin-container">
     <button class="login-btn" onclick="window.location.href='/login'">Login</button>
     <button class="register-btn" onclick="window.location.href='/register'">Register</button>
+    <%}%>
   </div>
 </nav>

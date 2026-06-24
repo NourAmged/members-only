@@ -1,9 +1,9 @@
 function registerPage(req, res) {
-  res.render("registerpage");
+  res.render("registerpage", { user: req.user });
 }
 
 function loginPage(req, res) {
-  res.render("loginpage");
+  res.render("loginpage", { user: req.user });
 }
 
 function homePage(req, res) {
