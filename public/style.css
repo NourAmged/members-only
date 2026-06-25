@@ -6,7 +6,7 @@
 
 .nav {
   display: flex;
-  padding: 2rem 1rem;
+  padding: 2rem 4.5rem;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid grey;
@@ -74,7 +74,7 @@
 
 .user-menu {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -87,4 +87,9 @@
   width: 90px;
   height: 120px;
   border: 2px solid black;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  display: none;
 }
+
