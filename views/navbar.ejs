@@ -4,11 +4,11 @@
   <div class="user-menu" onclick="document.querySelector('.drop-menu').style.display = document.querySelector('.drop-menu').style.display == 'none' ? 'flex' : 'none'">
     <h2><%= user.username%></h2>
     <img src="./down-arrow.svg" width="22px" height="22px">
-    <ul class="drop-menu">
-      <li><button>New post</button></li>
-      <li><button>All users</button></li>
-      <li><button>Logout</button></li>
-    </ul>
+    <div class="drop-menu">
+      <button>New post</button>
+      <button>All users</button>
+      <button onclick="window.location.href='/logout'">Logout</button>
+    </div>
   </div>
   <%} else{%>
   <div class="signin-container">

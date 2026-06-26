@@ -83,13 +83,23 @@
 .drop-menu {
   position: absolute;
   top: 11%;
-  list-style-type: none;
   width: 90px;
-  height: 120px;
+  height: 140px;
   border: 2px solid black;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   display: none;
 }
 
+.drop-menu button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid black;
+  height: 35%;
+  width: 100%;
+}
+.drop-menu button:hover{
+  background-color:lightgray;
+}
