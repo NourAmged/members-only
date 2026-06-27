@@ -48,4 +48,29 @@ async function loginUser(req, res, next) {
   })(req, res, next);
 }
 
-module.exports = { addUser, loginUser };
+function logoutUser(req, res, next) {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+}
+
+function isLoggedOut(req, res, next) {
+  if (!req.isAuthenticated()) {
+    next();
+    return;
+  }
+  res.redirect("/");
+}
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+    return;
+  }
+  res.redirect("/");
+}
+
+module.exports = { addUser, loginUser, logoutUser, isLoggedIn, isLoggedOut };

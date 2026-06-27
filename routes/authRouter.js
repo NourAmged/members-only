@@ -3,30 +3,33 @@ const { Router } = require("express");
 const { validateUserRegister } = require("../middlewares/userValidator");
 const { validateUserLogin } = require("../middlewares/userValidator");
 
-const { addUser } = require("../controllers/authController");
-const { loginUser } = require("../controllers/authController");
+const {
+  addUser,
+  loginUser,
+  logoutUser,
+  isLoggedIn,
+  isLoggedOut,
+} = require("../controllers/authController");
 
-const { registerPage, loginPage } = require("../controllers/pageController");
+const {
+  registerPage,
+  loginPage,
+  newPost,
+} = require("../controllers/pageController");
 
 const registerRouter = Router();
+
 const loginRouter = Router();
 const logoutRouter = Router();
 
-registerRouter.get("/", registerPage);
+const makePostRouter = Router();
+
+registerRouter.get("/", isLoggedOut, registerPage);
+loginRouter.get("/", isLoggedOut, loginPage);
+logoutRouter.get("/", isLoggedOut, logoutUser);
+makePostRouter.get("/", isLoggedIn, newPost);
+
 registerRouter.post("/", validateUserRegister, addUser);
-
-loginRouter.get("/", loginPage);
-
 loginRouter.post("/", validateUserLogin, loginUser);
 
-logoutRouter.get("/", (req, res, next) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-
-    res.redirect("/");
-  });
-});
-
-module.exports = { registerRouter, loginRouter, logoutRouter };
+module.exports = { registerRouter, loginRouter, logoutRouter, makePostRouter };

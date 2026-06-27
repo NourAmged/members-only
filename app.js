@@ -8,7 +8,13 @@ const pgSession = require("connect-pg-simple")(session);
 const pool = require("./db/pool");
 
 const indexRouter = require("./routes/indexRouter");
-const { registerRouter, loginRouter, logoutRouter } = require("./routes/authRouter");
+const {
+  registerRouter,
+  loginRouter,
+  logoutRouter,
+  make,
+  makePostRouter,
+} = require("./routes/authRouter");
 
 const app = express();
 const publicPath = path.join(__dirname, "public");
@@ -44,6 +50,8 @@ app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 
 app.use("/logout", logoutRouter);
+
+app.use("/new-post", makePostRouter);
 
 app.listen(PORT, () => {
   console.log(`app is running on localhost:${PORT}`);

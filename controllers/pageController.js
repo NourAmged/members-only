@@ -1,17 +1,22 @@
-function registerPage(req, res) {
+function registerPage(req, res, next) {
   res.render("registerpage", { user: req.user });
 }
 
-function loginPage(req, res) {
+function loginPage(req, res, next) {
   res.render("loginpage", { user: req.user });
 }
 
-function homePage(req, res) {
+function homePage(req, res, next) {
   return res.render("homepage", { user: req.user });
+}
+
+function newPost(req, res, next) {
+  return res.render("newpost", { user: req.user });
 }
 
 module.exports = {
   registerPage,
   loginPage,
   homePage,
+  newPost,
 };
