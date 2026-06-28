@@ -133,3 +133,9 @@
   height: 100%;
   margin-top: 5px;
 }
+
+.new-post-form button {
+  font-size: 1.2em;
+  margin-top: 22px;
+  width: 100%;
+}

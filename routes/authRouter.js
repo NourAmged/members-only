@@ -1,7 +1,10 @@
 const { Router } = require("express");
 
-const { validateUserRegister } = require("../middlewares/userValidator");
-const { validateUserLogin } = require("../middlewares/userValidator");
+const {
+  validateUserRegister,
+  validateUserLogin,
+  validatePost,
+} = require("../middlewares/userValidator");
 
 const {
   addUser,
@@ -9,6 +12,7 @@ const {
   logoutUser,
   isLoggedIn,
   isLoggedOut,
+  postContent,
 } = require("../controllers/authController");
 
 const {
@@ -31,5 +35,6 @@ makePostRouter.get("/", isLoggedIn, newPost);
 
 registerRouter.post("/", validateUserRegister, addUser);
 loginRouter.post("/", validateUserLogin, loginUser);
+makePostRouter.post("/", isLoggedIn, validatePost, postContent);
 
 module.exports = { registerRouter, loginRouter, logoutRouter, makePostRouter };

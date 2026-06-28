@@ -33,8 +33,22 @@ async function registerUser({ fullname, username, password }) {
   }
 }
 
+async function addContent({ title, content }, userid) {
+  try {
+    await pool.query(
+      `
+      INSERT INTO user_post (user_id, title, content) VALUES ($1, $2, $3);
+      `,
+      [userid, title, content],
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   getUserByUsername,
   getUserById,
   registerUser,
+  addContent,
 };

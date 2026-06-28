@@ -45,4 +45,16 @@ const validateUserLogin = [
     .withMessage("Password should at least 8 characters long"),
 ];
 
-module.exports = { validateUserRegister, validateUserLogin };
+const validatePost = [
+  body("title")
+    .trim()
+    .isLength({ min: 10, max: 35 })
+    .withMessage("Title of post should be between 10 and 35"),
+
+  body("content")
+    .trim()
+    .isLength({ min: 10, max: 255 })
+    .withMessage("Content of post should be between 10 and 255"),
+];
+
+module.exports = { validateUserRegister, validateUserLogin, validatePost };
