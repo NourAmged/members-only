@@ -46,9 +46,18 @@ async function addContent({ title, content }, userid) {
   }
 }
 
+async function getAllPosts() {
+  const { rows } = await pool.query(
+    `SELECT title, content, created_at, fullname, username
+     FROM user_post INNER JOIN users ON user_id = id`,
+  );
+  return rows;
+}
+
 module.exports = {
   getUserByUsername,
   getUserById,
   registerUser,
   addContent,
+  getAllPosts,
 };

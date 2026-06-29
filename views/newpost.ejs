@@ -20,6 +20,13 @@
       <textarea rows="12" cols="34" name="content" id="content"></textarea>
     </div>
     <button type="submit">Submit</button>
+    <% if (locals.errors) { %>
+    <ul class="error-list" style="padding:1rem">
+      <% locals.errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+    <% } %>
   </form>
 </body>
 

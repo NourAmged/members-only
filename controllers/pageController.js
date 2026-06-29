@@ -7,7 +7,7 @@ function loginPage(req, res, next) {
 }
 
 function homePage(req, res, next) {
-  return res.render("homepage", { user: req.user });
+  return res.render("homepage", { user: req.user, posts: req.posts });
 }
 
 function newPost(req, res, next) {

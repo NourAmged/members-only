@@ -42,7 +42,6 @@ async function loginUser(req, res, next) {
 
     req.logIn(user, (err) => {
       if (err) return next(err);
-
       return res.redirect("/");
     });
   })(req, res, next);
@@ -79,17 +78,18 @@ async function postContent(req, res, next) {
   if (!errors.isEmpty()) {
     return res.status(400).render("newpost", {
       errors: errors.array(),
+      user: req.user,
     });
   }
 
   const data = matchedData(req);
-  console.log(data);
   try {
     await addContent(data, req.user.id);
     res.redirect("/");
   } catch (error) {
     return res.status(400).render("newpost", {
       errors: [{ msg: error.message }],
+      user: req.user,
     });
   }
 }
