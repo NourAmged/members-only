@@ -21,7 +21,7 @@
     </div>
     <button type="submit">Submit</button>
     <% if (locals.errors) { %>
-    <ul class="error-list" style="padding:1rem">
+    <ul class="error-list">
       <% locals.errors.forEach(function(error) { %>
       <li><%= error.msg %></li>
       <% }); %>

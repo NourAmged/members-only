@@ -10,13 +10,32 @@
 
 <body>
   <%- include("navbar", locals.user) %>
+  <%if(locals.user){ %>
+  <%if(user.member == false){%>
+  <div class="member">
+    <p>If you want to see members name click on button bellow</p>
+    <button>Become a member</button>
+  </div>
+  
+  <%}%>
+  <%}%>
   <%if(locals.posts) {%>
   <div class="posts-container">
     <% posts.forEach((post) => { %>
     <div class="post-card">
       <div class="user-info">
+        <%if(locals.user){%>
+        <%if(user.member == true){%>
         <p><%= post.fullname%></p>
-        <p>@<%= post.username%></p>
+        <p>@<%= post.username%></p> 
+        <%} else {%>
+        <p>*****</p>
+        <p>*********</p>
+        <%}%>
+        <%} else {%>
+        <p>*****</p>
+        <p>*********</p>
+        <%}%>
       </div>
       <div class="post-content">
         <h3><%= post.title %></h3>
@@ -27,5 +46,4 @@
   </div>
   <%}%>
 </body>
-
 </html>

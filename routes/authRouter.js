@@ -30,7 +30,7 @@ const makePostRouter = Router();
 
 registerRouter.get("/", isLoggedOut, registerPage);
 loginRouter.get("/", isLoggedOut, loginPage);
-logoutRouter.get("/", isLoggedOut, logoutUser);
+logoutRouter.get("/", logoutUser);
 makePostRouter.get("/", isLoggedIn, newPost);
 
 registerRouter.post("/", validateUserRegister, addUser);
