@@ -14,9 +14,8 @@
   <%if(user.member == false){%>
   <div class="member">
     <p>If you want to see members name click on button bellow</p>
-    <button>Become a member</button>
+    <button onclick="window.location.href='/member'">Become a member</button>
   </div>
-  
   <%}%>
   <%}%>
   <%if(locals.posts) {%>
@@ -27,7 +26,7 @@
         <%if(locals.user){%>
         <%if(user.member == true){%>
         <p><%= post.fullname%></p>
-        <p>@<%= post.username%></p> 
+        <p>@<%= post.username%></p>
         <%} else {%>
         <p>*****</p>
         <p>*********</p>
@@ -43,6 +42,10 @@
       </div>
     </div>
     <%}); %>
+  </div>
+  <%} else {%>
+  <div class="post-card">
+    <h2>There is no posts</h2>
   </div>
   <%}%>
 </body>

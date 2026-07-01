@@ -54,10 +54,15 @@ async function getAllPosts() {
   return rows;
 }
 
+async function addMember(id) {
+  await pool.query(`UPDATE users SET member = true WHERE id = $1 `, [id]);
+}
+
 module.exports = {
   getUserByUsername,
   getUserById,
   registerUser,
   addContent,
   getAllPosts,
+  addMember
 };

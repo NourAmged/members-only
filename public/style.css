@@ -106,7 +106,8 @@
   background-color: lightgray;
 }
 
-.new-post-form {
+.new-post-form,
+.member-form {
   display: flex;
   justify-content: flex-start;
   gap: 1.2rem;
@@ -175,4 +176,11 @@
   padding: 1rem;
   border: 2px solid black;
   border-radius: 7px;
+}
+
+.member button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 5px 3px;
+  cursor: pointer;
 }

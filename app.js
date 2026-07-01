@@ -14,6 +14,7 @@ const {
   logoutRouter,
   make,
   makePostRouter,
+  memberRouter
 } = require("./routes/authRouter");
 
 const app = express();
@@ -52,6 +53,8 @@ app.use("/register", registerRouter);
 app.use("/logout", logoutRouter);
 
 app.use("/new-post", makePostRouter);
+
+app.use("/member", memberRouter);
 
 app.listen(PORT, () => {
   console.log(`app is running on localhost:${PORT}`);

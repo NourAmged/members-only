@@ -57,4 +57,4 @@ const validatePost = [
     .withMessage("Content of post should be between 10 and 255"),
 ];
 
-module.exports = { validateUserRegister, validateUserLogin, validatePost };
+module.exports = { validateUserRegister, validateUserLogin, validatePost};

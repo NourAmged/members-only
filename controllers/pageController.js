@@ -7,7 +7,6 @@ function loginPage(req, res, next) {
 }
 
 function homePage(req, res, next) {
-  console.log(req.user);
   return res.render("homepage", { user: req.user, posts: req.posts });
 }
 
@@ -15,9 +14,14 @@ function newPost(req, res, next) {
   return res.render("newpost", { user: req.user });
 }
 
+function member(req, res, next) {
+  return res.render("member", { user: req.user });
+}
+
 module.exports = {
   registerPage,
   loginPage,
   homePage,
   newPost,
+  member
 };

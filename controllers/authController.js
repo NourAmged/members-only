@@ -1,5 +1,6 @@
 const { validationResult, matchedData } = require("express-validator");
-const { registerUser, addContent } = require("../db/queries");
+const { registerUser, addContent, addMember } = require("../db/queries");
+
 const passport = require("../config/passport");
 
 async function addUser(req, res) {
@@ -94,6 +95,28 @@ async function postContent(req, res, next) {
   }
 }
 
+async function isNotMember(req, res, next) {
+  if (req.user.member === false) {
+    next();
+    return;
+  }
+  res.redirect("/");
+}
+
+async function joinMember(req, res, next) {
+  try {
+    if (req.body.password === process.env.MEMBER_PASSWORD) {
+      await addMember(req.user.id);
+      res.redirect("/");
+    } else throw new Error("Incorrect Password");
+  } catch (error) {
+    return res.status(400).render("member", {
+      errors: [{ msg: error.message }],
+      user: req.user,
+    });
+  }
+}
+
 module.exports = {
   addUser,
   loginUser,
@@ -101,4 +124,6 @@ module.exports = {
   isLoggedIn,
   isLoggedOut,
   postContent,
+  joinMember,
+  isNotMember
 };
